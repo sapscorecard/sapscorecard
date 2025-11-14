@@ -60,11 +60,19 @@ async function loadData() {
       kpiBlock.innerHTML = `
         <div class="metric-row"><div class="metric-label">KPI:</div><div>${item.kpi || ""}</div></div>
         <div class="metric-row"><div class="metric-label">Baseline:</div><div>${item.baseline || ""}</div></div>
-        <div class="metric-row"><div class="metric-label">Current:</div><div>${item.current || ""}</div></div>
+        <div class="metric-row current-row""><div class="metric-label">Current:</div><div>${item.current || ""}</div></div>
         <div class="metric-row"><div class="metric-label">2030 Target:</div><div>${item.target2030 || ""}</div></div>
         <div class="metric-row"><div class="metric-label">2040 Target:</div><div>${item.target2040 || ""}</div></div>
         <div class="metric-row"><div class="metric-label">2050 Target:</div><div>${item.target2050 || ""}</div></div>
       `;
+      if (item.color) {
+  const currentRow = kpiBlock.querySelector(".current-row");
+  if (currentRow) {
+    currentRow.style.backgroundColor = item.color;
+    currentRow.style.borderRadius = "4px";
+    currentRow.style.padding = "2px 6px";
+  }
+}
 
       content.appendChild(kpiBlock);
 
