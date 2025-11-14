@@ -23,11 +23,12 @@ async function loadData() {
     const target2040   = row["2040Target"];
     const target2050   = row["2050Target"];
     const notes        = row["Notes"];
+    const color        = row["Color"];
 
     if (!sector) return;
 
     if (!groups[sector]) groups[sector] = [];
-    groups[sector].push({ kpi, baseline, current, target2030, target2040, target2050, notes });
+    groups[sector].push({ kpi, baseline, current, target2030, target2040, target2050, notes, color });
   });
 
   // Get container once
@@ -52,6 +53,9 @@ async function loadData() {
     groups[sector].forEach((item) => {
       const kpiBlock = document.createElement("div");
       kpiBlock.className = "kpi-block";
+      if (item.color) {
+  kpiBlock.style.backgroundColor = item.color;
+}
 
       kpiBlock.innerHTML = `
         <div class="metric-row"><div class="metric-label">KPI:</div><div>${item.kpi || ""}</div></div>
