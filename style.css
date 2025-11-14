@@ -33,7 +33,7 @@ main {
 
 .metric {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 0.3rem 0;
 }
 
