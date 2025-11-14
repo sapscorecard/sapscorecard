@@ -5,12 +5,12 @@ async function loadData() {
   const text = await response.text();
 
   // Split CSV rows
-  const rows = text
-    .trim()
-    .split("\n")
-    .map((r) => r.split(","));
+const parsed = Papa.parse(text, {
+  header: true,
+  skipEmptyLines: true
+});
 
-  rows.shift(); // remove header row
+const rows = parsed.data;
 
   // Group by sector
   const groups = {};
