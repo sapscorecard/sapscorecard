@@ -53,9 +53,7 @@ async function loadData() {
     groups[sector].forEach((item) => {
       const kpiBlock = document.createElement("div");
       kpiBlock.className = "kpi-block";
-      if (item.color) {
-  kpiBlock.style.backgroundColor = item.color;
-}
+  
 
       kpiBlock.innerHTML = `
         <div class="metric-row"><div class="metric-label">KPI:</div><div>${item.kpi || ""}</div></div>
